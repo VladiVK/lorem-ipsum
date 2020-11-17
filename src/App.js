@@ -7,7 +7,29 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('cu-cu ' + count);
+    
+    let amountOfParagraphs = parseInt(count);
+
+    // amountOfParagraphs = count <= 0 ? 1 : (count > 9 ? 9 : count)
+
+    if(count <= 0) {
+      amountOfParagraphs = 1;
+    } 
+    if(count > 9) {
+      amountOfParagraphs = 9;
+    } 
+
+    // switch (true) {
+    //   case count <= 0:
+    //     amountOfParagraphs = 1;
+    //     return;
+    //   case count > 9:
+    //     amountOfParagraphs = 9;
+    //     return;
+    //   default:
+    //     amountOfParagraphs = count
+    // }
+    setText(data.slice(0, amountOfParagraphs));
   };
   return (
     <section className='section-center'>
@@ -23,6 +45,12 @@ function App() {
         />
         <button type='submit' className="btn">genetate</button>
       </form>
+      <article className='lorem-text'>
+        {text.map( (item, index) => {
+          return <p key={index}>{item}</p>
+        })}
+
+      </article>
     </section>
   );
 }
